@@ -211,7 +211,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ onClose }) => {
             <button
               onClick={handleSendMessage}
               disabled={!inputText.trim() || isLoading}
-              className="p-2 bg-blue-500 text-white rounded-full hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 bg-gradient-to-r from-cyan-500 to-green-500 text-white rounded-full hover:from-cyan-600 hover:to-green-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
             >
               <Send size={20} />
             </button>

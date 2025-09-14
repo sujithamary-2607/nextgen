@@ -477,14 +477,14 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
                   onClick={() => handleAnswerSelect(index)}
                   className={`w-full p-4 text-left rounded-lg border-2 transition-all ${
                     selectedAnswer === index
-                      ? `border-blue-500 bg-blue-50`
+                      ? `border-cyan-500 bg-cyan-50`
                       : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
                   }`}
                 >
                   <div className="flex items-center">
                     <div className={`w-6 h-6 rounded-full border-2 mr-3 flex items-center justify-center ${
                       selectedAnswer === index
-                        ? 'border-blue-500 bg-blue-500'
+                        ? 'border-cyan-500 bg-cyan-500'
                         : 'border-gray-300'
                     }`}>
                       {selectedAnswer === index && (
