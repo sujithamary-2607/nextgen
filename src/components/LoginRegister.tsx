@@ -43,13 +43,13 @@ const LoginRegister: React.FC = () => {
         {/* Logo and Welcome */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center space-x-2 mb-4">
-            <img 
-              src="https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=80&h=80&fit=crop" 
-              alt="NEOLEARN Logo" 
-              className="w-16 h-16 rounded-2xl shadow-lg"
-            />
+            <div className="w-16 h-16 bg-gradient-to-br from-cyan-400 to-green-400 rounded-2xl shadow-lg flex items-center justify-center">
+              <svg viewBox="0 0 24 24" className="w-10 h-10 text-white" fill="currentColor">
+                <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+              </svg>
+            </div>
             <div>
-              <h1 className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">NEOLEARN</h1>
+              <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-600 to-green-600 bg-clip-text text-transparent">NEOLEARN</h1>
               <p className="text-sm text-gray-600 font-medium">Learn, Play, Grow</p>
             </div>
           </div>

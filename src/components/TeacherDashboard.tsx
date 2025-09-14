@@ -171,7 +171,7 @@ const TeacherDashboard: React.FC = () => {
               <Filter size={16} className="mr-2" />
               Filter
             </button>
-            <button className="flex items-center px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+            <button className="flex items-center px-4 py-2 bg-gradient-to-r from-cyan-600 to-green-600 text-white rounded-lg hover:from-cyan-700 hover:to-green-700 transition-colors">
               <Download size={16} className="mr-2" />
               Export
             </button>

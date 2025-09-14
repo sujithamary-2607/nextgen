@@ -27,7 +27,7 @@ const StudentDashboard: React.FC = () => {
       id: 'science',
       name: 'Science',
       icon: Atom,
-      color: 'from-blue-500 to-green-500',
+      color: 'from-cyan-500 to-green-500',
       progress: 75,
       games: [
         { id: 'sci-quiz-1', name: 'Physics Quiz', description: 'Test your physics knowledge', type: 'quiz', difficulty: 'easy', points: 100, duration: '15 min', players: 245 },
@@ -42,7 +42,7 @@ const StudentDashboard: React.FC = () => {
       id: 'technology',
       name: 'Technology',
       icon: Cpu,
-      color: 'from-green-500 to-blue-500',
+      color: 'from-green-500 to-cyan-500',
       progress: 60,
       games: [
         { id: 'tech-quiz-1', name: 'Computer Basics', description: 'Learn computer fundamentals', type: 'quiz', difficulty: 'easy', points: 100, duration: '15 min', players: 278 },
@@ -57,7 +57,7 @@ const StudentDashboard: React.FC = () => {
       id: 'engineering',
       name: 'Engineering',
       icon: Cog,
-      color: 'from-blue-600 to-green-400',
+      color: 'from-cyan-600 to-green-400',
       progress: 45,
       games: [
         { id: 'eng-puzzle-1', name: 'Bridge Building', description: 'Design strong bridges', type: 'puzzle', difficulty: 'hard', points: 180, duration: '25 min', players: 156 },
@@ -72,7 +72,7 @@ const StudentDashboard: React.FC = () => {
       id: 'mathematics',
       name: 'Mathematics',
       icon: Calculator,
-      color: 'from-green-600 to-blue-400',
+      color: 'from-green-600 to-cyan-400',
       progress: 85,
       games: [
         { id: 'math-quiz-1', name: 'Algebra Challenge', description: 'Solve algebraic equations', type: 'quiz', difficulty: 'medium', points: 130, duration: '20 min', players: 289 },
@@ -109,11 +109,11 @@ const StudentDashboard: React.FC = () => {
         <div className="container mx-auto px-4 py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
             <div className="text-center p-4 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg">
-              <div className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-green-600 bg-clip-text text-transparent">0</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-green-600 bg-clip-text text-transparent">0</div>
               <div className="text-sm text-gray-600">Total Points</div>
             </div>
             <div className="text-center p-4 bg-gradient-to-r from-green-50 to-blue-50 rounded-lg">
-              <div className="text-2xl font-bold bg-gradient-to-r from-green-600 to-blue-600 bg-clip-text text-transparent">{user?.streak || 0}</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-green-600 bg-clip-text text-transparent">{user?.streak || 0}</div>
               <div className="text-sm text-gray-600">Day Streak</div>
             </div>
             <div className="text-center p-4 bg-gradient-to-r from-yellow-50 to-orange-50 rounded-lg">
@@ -121,7 +121,7 @@ const StudentDashboard: React.FC = () => {
               <div className="text-sm text-gray-600">Badges Earned</div>
             </div>
             <div className="text-center p-4 bg-gradient-to-r from-purple-50 to-pink-50 rounded-lg">
-              <div className="text-2xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">Grade {user?.grade}</div>
+              <div className="text-2xl font-bold bg-gradient-to-r from-cyan-600 to-green-600 bg-clip-text text-transparent">Grade {user?.grade}</div>
               <div className="text-sm text-gray-600">Current Level</div>
             </div>
           </div>
@@ -133,7 +133,7 @@ const StudentDashboard: React.FC = () => {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Welcome Message */}
-            <div className="bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-2xl p-6">
+            <div className="bg-gradient-to-r from-cyan-500 to-green-500 text-white rounded-2xl p-6">
               <h2 className="text-2xl font-bold mb-2">
                 Welcome back, {user?.name}! 👋
               </h2>

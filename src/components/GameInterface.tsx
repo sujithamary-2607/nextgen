@@ -50,6 +50,106 @@ const quizQuestions: { [key: string]: any[] } = {
       hint: "It's used to create web pages."
     }
   ],
+  'tech-sim-1': [
+    {
+      question: "In programming, what does 'debugging' mean?",
+      options: ["Writing code", "Finding and fixing errors", "Running code", "Deleting code"],
+      correct: 1,
+      hint: "It's like being a detective for code problems."
+    },
+    {
+      question: "What is the binary representation of decimal 5?",
+      options: ["101", "110", "100", "111"],
+      correct: 0,
+      hint: "Think about powers of 2: 4+1=5."
+    },
+    {
+      question: "Which protocol is used for secure web browsing?",
+      options: ["HTTP", "HTTPS", "FTP", "SMTP"],
+      correct: 1,
+      hint: "The 'S' stands for Secure."
+    }
+  ],
+  'tech-puzzle-1': [
+    {
+      question: "Complete the algorithm: To sort numbers, compare and ___",
+      options: ["Delete", "Swap", "Add", "Multiply"],
+      correct: 1,
+      hint: "You need to change positions of elements."
+    },
+    {
+      question: "What data structure follows LIFO principle?",
+      options: ["Queue", "Stack", "Array", "Tree"],
+      correct: 1,
+      hint: "Last In, First Out - like a stack of plates."
+    },
+    {
+      question: "In databases, what does SQL stand for?",
+      options: ["Simple Query Language", "Structured Query Language", "System Query Language", "Standard Query Language"],
+      correct: 1,
+      hint: "It's used to manage and query databases."
+    }
+  ],
+  'tech-hunt-1': [
+    {
+      question: "Find the tech term: 'Artificial intelligence that learns'",
+      options: ["Machine Learning", "Deep Learning", "Neural Networks", "All of the above"],
+      correct: 3,
+      hint: "All these terms are related to AI that can learn."
+    },
+    {
+      question: "What does 'IoT' stand for?",
+      options: ["Internet of Things", "Input of Technology", "Interface of Tools", "Integration of Tech"],
+      correct: 0,
+      hint: "It connects everyday objects to the internet."
+    },
+    {
+      question: "Which technology enables contactless payments?",
+      options: ["Bluetooth", "WiFi", "NFC", "GPS"],
+      correct: 2,
+      hint: "Near Field Communication - works at very short distances."
+    }
+  ],
+  'tech-quiz-2': [
+    {
+      question: "What is the main purpose of CSS?",
+      options: ["Structure", "Styling", "Functionality", "Database"],
+      correct: 1,
+      hint: "It makes web pages look beautiful."
+    },
+    {
+      question: "Which company developed the React framework?",
+      options: ["Google", "Microsoft", "Facebook", "Apple"],
+      correct: 2,
+      hint: "It's now called Meta."
+    },
+    {
+      question: "What does API stand for?",
+      options: ["Application Programming Interface", "Advanced Programming Interface", "Automated Programming Interface", "Application Process Interface"],
+      correct: 0,
+      hint: "It allows different software applications to communicate."
+    }
+  ],
+  'tech-sim-2': [
+    {
+      question: "In database design, what is a primary key?",
+      options: ["A password", "A unique identifier", "A foreign reference", "A data type"],
+      correct: 1,
+      hint: "It uniquely identifies each record in a table."
+    },
+    {
+      question: "What is the purpose of normalization in databases?",
+      options: ["Speed up queries", "Reduce redundancy", "Increase storage", "Add security"],
+      correct: 1,
+      hint: "It eliminates duplicate data."
+    },
+    {
+      question: "Which SQL command is used to retrieve data?",
+      options: ["INSERT", "UPDATE", "SELECT", "DELETE"],
+      correct: 2,
+      hint: "You use it to choose and display data."
+    }
+  ],
   'math-quiz-1': [
     {
       question: "What is the value of π (pi) approximately?",
@@ -68,6 +168,106 @@ const quizQuestions: { [key: string]: any[] } = {
       options: ["6", "8", "9", "4"],
       correct: 1,
       hint: "Multiply 2 by itself three times."
+    }
+  ],
+  'math-puzzle-1': [
+    {
+      question: "What is the area of a triangle with base 6 and height 8?",
+      options: ["24", "48", "14", "32"],
+      correct: 0,
+      hint: "Area = (1/2) × base × height"
+    },
+    {
+      question: "If a circle has radius 5, what is its circumference?",
+      options: ["10π", "25π", "5π", "15π"],
+      correct: 0,
+      hint: "Circumference = 2πr"
+    },
+    {
+      question: "What is the volume of a cube with side length 4?",
+      options: ["16", "64", "12", "48"],
+      correct: 1,
+      hint: "Volume = side³"
+    }
+  ],
+  'math-sim-1': [
+    {
+      question: "What is the derivative of x²?",
+      options: ["2x", "x", "2", "x²"],
+      correct: 0,
+      hint: "Use the power rule: bring down the exponent and subtract 1."
+    },
+    {
+      question: "What is the integral of 2x?",
+      options: ["x²", "x² + C", "2", "2x²"],
+      correct: 1,
+      hint: "Don't forget the constant of integration!"
+    },
+    {
+      question: "What is the limit of (x²-1)/(x-1) as x approaches 1?",
+      options: ["0", "1", "2", "undefined"],
+      correct: 2,
+      hint: "Factor the numerator first."
+    }
+  ],
+  'math-hunt-1': [
+    {
+      question: "Find the pattern: 2, 4, 8, 16, ___",
+      options: ["24", "32", "20", "18"],
+      correct: 1,
+      hint: "Each number is double the previous one."
+    },
+    {
+      question: "What comes next in the Fibonacci sequence: 1, 1, 2, 3, 5, ___",
+      options: ["7", "8", "9", "6"],
+      correct: 1,
+      hint: "Add the two previous numbers."
+    },
+    {
+      question: "Complete the sequence: 1, 4, 9, 16, ___",
+      options: ["20", "25", "24", "21"],
+      correct: 1,
+      hint: "These are perfect squares: 1², 2², 3², 4², ..."
+    }
+  ],
+  'math-quiz-2': [
+    {
+      question: "What is the mean of the dataset: 2, 4, 6, 8, 10?",
+      options: ["5", "6", "7", "8"],
+      correct: 1,
+      hint: "Add all numbers and divide by how many there are."
+    },
+    {
+      question: "What is the probability of rolling a 6 on a fair die?",
+      options: ["1/6", "1/3", "1/2", "1/4"],
+      correct: 0,
+      hint: "There's one favorable outcome out of six possible."
+    },
+    {
+      question: "What is the standard deviation a measure of?",
+      options: ["Central tendency", "Spread", "Correlation", "Frequency"],
+      correct: 1,
+      hint: "It tells you how spread out the data points are."
+    }
+  ],
+  'math-puzzle-2': [
+    {
+      question: "What is sin(30°)?",
+      options: ["1/2", "√3/2", "1", "√2/2"],
+      correct: 0,
+      hint: "It's one of the special angles in trigonometry."
+    },
+    {
+      question: "What is cos(60°)?",
+      options: ["1/2", "√3/2", "1", "0"],
+      correct: 0,
+      hint: "cos(60°) = sin(30°)"
+    },
+    {
+      question: "What is tan(45°)?",
+      options: ["1", "√2", "1/2", "√3"],
+      correct: 0,
+      hint: "At 45°, sine and cosine are equal."
     }
   ],
   'eng-quiz-1': [

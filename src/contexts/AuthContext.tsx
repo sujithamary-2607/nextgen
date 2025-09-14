@@ -39,7 +39,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         role,
         grade: role === 'student' ? 8 : undefined,
         preferredLanguage: 'english',
-        streak: role === 'student' ? 0 : undefined,
+        streak: 0,
         badges: role === 'student' ? [] : undefined,
         certificates: role === 'student' ? [] : undefined,
       };
@@ -60,7 +60,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
         role,
         grade: grade || (role === 'student' ? 8 : undefined),
         preferredLanguage: 'english',
-        streak: role === 'student' ? 0 : undefined,
+        streak: 0,
         badges: role === 'student' ? [] : undefined,
         certificates: role === 'student' ? [] : undefined,
       };

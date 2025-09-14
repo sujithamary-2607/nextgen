@@ -13,13 +13,13 @@ const Header: React.FC = () => {
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-4">
             <div className="flex items-center space-x-3">
-              <img 
-                src="https://images.pexels.com/photos/5428836/pexels-photo-5428836.jpeg?auto=compress&cs=tinysrgb&w=64&h=64&fit=crop" 
-                alt="NEOLEARN Logo" 
-                className="w-10 h-10 rounded-lg"
-              />
+              <div className="w-10 h-10 bg-gradient-to-br from-cyan-400 to-green-400 rounded-lg flex items-center justify-center">
+                <svg viewBox="0 0 24 24" className="w-6 h-6 text-white" fill="currentColor">
+                  <path d="M12 3L1 9l4 2.18v6L12 21l7-3.82v-6l2-1.09V17h2V9L12 3zm6.82 6L12 12.72 5.18 9 12 5.28 18.82 9zM17 15.99l-5 2.73-5-2.73v-3.72L12 15l5-2.73v3.72z"/>
+                </svg>
+              </div>
               <div>
-                <div className="text-2xl font-bold">NEOLEARN</div>
+                <div className="text-2xl font-bold bg-gradient-to-r from-cyan-200 to-green-200 bg-clip-text text-transparent">NEOLEARN</div>
                 <div className="text-xs opacity-80">Learn, Play, Grow</div>
               </div>
             </div>
