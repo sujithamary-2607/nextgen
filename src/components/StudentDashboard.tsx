@@ -133,7 +133,6 @@ const StudentDashboard: React.FC = () => {
           {/* Main Content */}
           <div className="lg:col-span-2 space-y-8">
             {/* Welcome Message */}
-            <div className="bg-gradient-to-r from-blue-500 to-purple-600 text-white rounded-2xl p-6">
             <div className="bg-gradient-to-r from-blue-500 to-green-500 text-white rounded-2xl p-6">
               <h2 className="text-2xl font-bold mb-2">
                 Welcome back, {user?.name}! 👋
