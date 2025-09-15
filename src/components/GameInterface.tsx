@@ -339,79 +339,6 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     }
-    
-    // Initialize game-specific states
-    if (game.type === 'puzzle') {
-      setPuzzlePieces(Array.from({length: 9}, (_, i) => i).sort(() => Math.random() - 0.5));
-    }
-  }, [timeLeft, gameCompleted, game.type]);
-
-  // Word Hunt Game Logic
-  const wordHuntWords = ['SCIENCE', 'PHYSICS', 'CHEMISTRY', 'BIOLOGY', 'ATOM', 'MOLECULE'];
-  const wordHuntGrid = [
-    ['S', 'C', 'I', 'E', 'N', 'C', 'E', 'X'],
-    ['P', 'H', 'Y', 'S', 'I', 'C', 'S', 'Y'],
-    ['C', 'H', 'E', 'M', 'I', 'S', 'T', 'R'],
-    ['B', 'I', 'O', 'L', 'O', 'G', 'Y', 'Y'],
-    ['A', 'T', 'O', 'M', 'X', 'Y', 'Z', 'A'],
-    ['M', 'O', 'L', 'E', 'C', 'U', 'L', 'E'],
-    ['X', 'Y', 'Z', 'A', 'B', 'C', 'D', 'F'],
-    ['G', 'H', 'I', 'J', 'K', 'L', 'M', 'N']
-  ];
-
-  const handleWordHuntCellClick = (row: number, col: number) => {
-    const cellIndex = row * 8 + col;
-    if (selectedCells.includes(cellIndex)) {
-      setSelectedCells(selectedCells.filter(cell => cell !== cellIndex));
-    } else {
-      setSelectedCells([...selectedCells, cellIndex]);
-    }
-  };
-
-  const checkWordHuntSelection = () => {
-    // Simple word checking logic - in real app, implement proper word detection
-    if (selectedCells.length >= 4) {
-      const newWord = `WORD_${foundWords.length + 1}`;
-      setFoundWords([...foundWords, newWord]);
-      setSelectedCells([]);
-      setScore(score + 1);
-      
-      if (foundWords.length + 1 >= 3) {
-        setGameCompleted(true);
-      }
-    }
-  };
-
-  // Puzzle Game Logic
-  const handlePuzzleDrop = (fromIndex: number, toIndex: number) => {
-    const newPieces = [...puzzlePieces];
-    [newPieces[fromIndex], newPieces[toIndex]] = [newPieces[toIndex], newPieces[fromIndex]];
-    setPuzzlePieces(newPieces);
-    
-    // Check if puzzle is solved
-    const isSolved = newPieces.every((piece, index) => piece === index);
-    if (isSolved) {
-      setScore(100);
-      setGameCompleted(true);
-    }
-  };
-
-  // Simulation Game Logic
-  const simulationSteps = [
-    { title: "Setup Experiment", description: "Prepare your virtual lab equipment" },
-    { title: "Add Reactants", description: "Select and add chemical compounds" },
-    { title: "Control Temperature", description: "Set the optimal temperature" },
-    { title: "Observe Results", description: "Watch the chemical reaction" }
-  ];
-
-  const handleSimulationNext = () => {
-    if (simulationStep < simulationSteps.length - 1) {
-      setSimulationStep(simulationStep + 1);
-      setScore(score + 25);
-    } else {
-      setGameCompleted(true);
-    }
-  };
 
   const handleAnswerSelect = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
@@ -467,6 +394,7 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-green-50 rounded-lg p-4">
+                <div className="text-xl font-bold text-green-600">{score}/{quizQuestions.length}</div>
                 <div className="text-xl font-bold text-green-600">{score}/{currentQuestions.length}</div>
                 <div className="text-sm text-gray-600">Correct</div>
               </div>
@@ -512,6 +440,7 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
               <div>
                 <h1 className="text-xl font-bold">{game.name}</h1>
                 <div className="flex items-center space-x-4 text-sm opacity-90">
+                  <span>Question {currentQuestion + 1} of {quizQuestions.length}</span>
                   <span>Question {currentQuestion + 1} of {currentQuestions.length}</span>
                   <div className="flex items-center">
                     <Star size={16} className="mr-1" />
@@ -544,58 +473,10 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
 
       {/* Game Content */}
       <div className="container mx-auto px-4 py-8">
-        <div className="max-w-2xl mx-auto">
-          {/* Question */}
-          <div className="bg-white rounded-2xl p-8 shadow-lg mb-6">
-            <h2 className="text-2xl font-bold text-gray-800 mb-6">
-              {currentQuestions[currentQuestion].question}
-            </h2>
+        {renderGameContent()}
 
-            {/* Answer Options */}
-            <div className="space-y-3">
-              {currentQuestions[currentQuestion].options.map((option, index) => (
-                <button
-                  key={index}
-                  onClick={() => handleAnswerSelect(index)}
-                  className={`w-full p-4 text-left rounded-lg border-2 transition-all ${
-                    selectedAnswer === index
-                      ? `border-cyan-500 bg-cyan-50`
-                      : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-                  }`}
-                >
-                  <div className="flex items-center">
-                    <div className={`w-6 h-6 rounded-full border-2 mr-3 flex items-center justify-center ${
-                      selectedAnswer === index
-                        ? 'border-cyan-500 bg-cyan-500'
-                        : 'border-gray-300'
-                    }`}>
-                      {selectedAnswer === index && (
-                        <div className="w-2 h-2 bg-white rounded-full"></div>
-                      )}
-                    </div>
-                    <span className="font-medium">{option}</span>
-                  </div>
-                </button>
-              ))}
-            </div>
-
-            {/* Hint Section */}
-            {showHint && (
-              <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                <div className="flex items-start">
-                  <Lightbulb className="text-yellow-600 mr-2 mt-1" size={20} />
-                  <div>
-                    <div className="font-medium text-yellow-800 mb-1">Hint:</div>
-                    <div className="text-sm text-yellow-700">
-                      {currentQuestions[currentQuestion].hint}
-                    </div>
-                  </div>
-                </div>
-              </div>
-            )}
-          </div>
-
-          {/* Controls */}
+        {/* Controls */}
+        {game.type === 'quiz' && (
           <div className="flex items-center justify-between">
             <button
               onClick={() => setShowHint(!showHint)}
@@ -617,7 +498,7 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
               {currentQuestion + 1 === currentQuestions.length ? 'Finish' : 'Next Question'}
             </button>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
