@@ -339,6 +339,7 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     }
+  }, [timeLeft, gameCompleted]);
 
   const handleAnswerSelect = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);
@@ -394,7 +395,6 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="bg-green-50 rounded-lg p-4">
-                <div className="text-xl font-bold text-green-600">{score}/{quizQuestions.length}</div>
                 <div className="text-xl font-bold text-green-600">{score}/{currentQuestions.length}</div>
                 <div className="text-sm text-gray-600">Correct</div>
               </div>
@@ -440,7 +440,6 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
               <div>
                 <h1 className="text-xl font-bold">{game.name}</h1>
                 <div className="flex items-center space-x-4 text-sm opacity-90">
-                  <span>Question {currentQuestion + 1} of {quizQuestions.length}</span>
                   <span>Question {currentQuestion + 1} of {currentQuestions.length}</span>
                   <div className="flex items-center">
                     <Star size={16} className="mr-1" />
@@ -473,10 +472,58 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
 
       {/* Game Content */}
       <div className="container mx-auto px-4 py-8">
-        {renderGameContent()}
+        <div className="max-w-2xl mx-auto">
+          {/* Question */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg mb-6">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+              {currentQuestions[currentQuestion].question}
+            </h2>
 
-        {/* Controls */}
-        {game.type === 'quiz' && (
+            {/* Answer Options */}
+            <div className="space-y-3">
+              {currentQuestions[currentQuestion].options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswerSelect(index)}
+                  className={`w-full p-4 text-left rounded-lg border-2 transition-all ${
+                    selectedAnswer === index
+                      ? `border-cyan-500 bg-cyan-50`
+                      : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="flex items-center">
+                    <div className={`w-6 h-6 rounded-full border-2 mr-3 flex items-center justify-center ${
+                      selectedAnswer === index
+                        ? 'border-cyan-500 bg-cyan-500'
+                        : 'border-gray-300'
+                    }`}>
+                      {selectedAnswer === index && (
+                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                      )}
+                    </div>
+                    <span className="font-medium">{option}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Hint Section */}
+            {showHint && (
+              <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <div className="flex items-start">
+                  <Lightbulb className="text-yellow-600 mr-2 mt-1" size={20} />
+                  <div>
+                    <div className="font-medium text-yellow-800 mb-1">Hint:</div>
+                    <div className="text-sm text-yellow-700">
+                      {currentQuestions[currentQuestion].hint}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Controls */}
           <div className="flex items-center justify-between">
             <button
               onClick={() => setShowHint(!showHint)}
@@ -498,7 +545,7 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
               {currentQuestion + 1 === currentQuestions.length ? 'Finish' : 'Next Question'}
             </button>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
