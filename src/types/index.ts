@@ -4,7 +4,7 @@ export interface User {
   email: string;
   role: 'teacher' | 'student';
   grade?: number;
-  preferredLanguage?: 'tamil' | 'english';
+  preferredLanguage?: 'tamil' | 'english' | 'hindi';
   streak?: number;
   badges?: Badge[];
   certificates?: Certificate[];

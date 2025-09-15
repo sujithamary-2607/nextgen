@@ -9,7 +9,7 @@ interface LanguageSelectorProps {
 const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageSelect }) => {
   const { user, updateLanguage } = useAuth();
 
-  const handleLanguageSelect = (language: 'tamil' | 'english') => {
+  const handleLanguageSelect = (language: 'tamil' | 'english' | 'hindi') => {
     updateLanguage(language);
     onLanguageSelect();
   };
@@ -34,6 +34,19 @@ const LanguageSelector: React.FC<LanguageSelectorProps> = ({ onLanguageSelect })
                 <div className="text-gray-500 text-sm">Continue in English</div>
               </div>
               <ArrowRight className="text-gray-400 group-hover:text-blue-600 group-hover:translate-x-1 transition-all" size={24} />
+            </div>
+          </button>
+
+          <button
+            onClick={() => handleLanguageSelect('hindi')}
+            className="w-full p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-green-200 group"
+          >
+            <div className="flex items-center justify-between">
+              <div className="text-left">
+                <div className="text-xl font-semibold text-gray-800 group-hover:text-green-600">हिंदी</div>
+                <div className="text-gray-500 text-sm">हिंदी में जारी रखें</div>
+              </div>
+              <ArrowRight className="text-gray-400 group-hover:text-green-600 group-hover:translate-x-1 transition-all" size={24} />
             </div>
           </button>
 

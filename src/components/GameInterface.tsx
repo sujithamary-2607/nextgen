@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Clock, Star, CheckCircle, XCircle, Lightbulb } from 'lucide-react';
+import { ArrowLeft, Clock, Star, CheckCircle, XCircle, Lightbulb, Shuffle, Search, Zap } from 'lucide-react';
 import { Game, Subject } from '../types';
 
 interface GameInterfaceProps {
@@ -321,13 +321,24 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
   const [gameCompleted, setGameCompleted] = useState(false);
   const [timeLeft, setTimeLeft] = useState(300); // 5 minutes
   const [showHint, setShowHint] = useState(false);
+  
+  // Word Hunt specific states
+  const [foundWords, setFoundWords] = useState<string[]>([]);
+  const [selectedCells, setSelectedCells] = useState<number[]>([]);
+  
+  // Puzzle specific states
+  const [puzzlePieces, setPuzzlePieces] = useState<number[]>([]);
+  const [draggedPiece, setDraggedPiece] = useState<number | null>(null);
+  
+  // Simulation specific states
+  const [simulationStep, setSimulationStep] = useState(0);
+  const [simulationInputs, setSimulationInputs] = useState<{[key: string]: string}>({});
 
   useEffect(() => {
     if (timeLeft > 0 && !gameCompleted) {
       const timer = setTimeout(() => setTimeLeft(timeLeft - 1), 1000);
       return () => clearTimeout(timer);
     }
-  }, [timeLeft, gameCompleted]);
 
   const handleAnswerSelect = (answerIndex: number) => {
     setSelectedAnswer(answerIndex);

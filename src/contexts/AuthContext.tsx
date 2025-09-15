@@ -76,7 +76,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({ children
     localStorage.removeItem('nextgen_user');
   };
 
-  const updateLanguage = (language: 'tamil' | 'english') => {
+  const updateLanguage = (language: 'tamil' | 'english' | 'hindi') => {
     if (user) {
       const updatedUser = { ...user, preferredLanguage: language };
       setUser(updatedUser);
