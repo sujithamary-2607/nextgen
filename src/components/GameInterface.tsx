@@ -369,57 +369,6 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
     return Math.round((score / currentQuestions.length) * 100);
   };
 
-  const renderGameContent = () => {
-    return (
-      <div className="max-w-4xl mx-auto">
-        <div className="bg-white rounded-2xl shadow-lg p-8">
-          <div className="mb-8">
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              {currentQuestions[currentQuestion].question}
-            </h2>
-            
-            {showHint && (
-              <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-6">
-                <div className="flex items-center">
-                  <Lightbulb className="text-yellow-600 mr-2" size={20} />
-                  <span className="text-yellow-800 font-medium">Hint:</span>
-                </div>
-                <p className="text-yellow-700 mt-1">{currentQuestions[currentQuestion].hint}</p>
-              </div>
-            )}
-          </div>
-
-          <div className="grid gap-4">
-            {currentQuestions[currentQuestion].options.map((option: string, index: number) => (
-              <button
-                key={index}
-                onClick={() => handleAnswerSelect(index)}
-                className={`p-4 text-left rounded-lg border-2 transition-all duration-300 ${
-                  selectedAnswer === index
-                    ? `border-blue-500 bg-blue-50`
-                    : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
-                }`}
-              >
-                <div className="flex items-center">
-                  <div className={`w-6 h-6 rounded-full border-2 mr-4 flex items-center justify-center ${
-                    selectedAnswer === index
-                      ? 'border-blue-500 bg-blue-500'
-                      : 'border-gray-300'
-                  }`}>
-                    {selectedAnswer === index && (
-                      <div className="w-2 h-2 bg-white rounded-full"></div>
-                    )}
-                  </div>
-                  <span className="text-gray-800">{option}</span>
-                </div>
-              </button>
-            ))}
-          </div>
-        </div>
-      </div>
-    );
-  };
-
   if (gameCompleted) {
     const percentage = getScorePercentage();
     const earnedPoints = Math.round((percentage / 100) * game.points);
@@ -523,10 +472,58 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
 
       {/* Game Content */}
       <div className="container mx-auto px-4 py-8">
-        {renderGameContent()}
+        <div className="max-w-2xl mx-auto">
+          {/* Question */}
+          <div className="bg-white rounded-2xl p-8 shadow-lg mb-6">
+            <h2 className="text-2xl font-bold text-gray-800 mb-6">
+              {currentQuestions[currentQuestion].question}
+            </h2>
 
-        {/* Controls */}
-        {game.type === 'quiz' && (
+            {/* Answer Options */}
+            <div className="space-y-3">
+              {currentQuestions[currentQuestion].options.map((option, index) => (
+                <button
+                  key={index}
+                  onClick={() => handleAnswerSelect(index)}
+                  className={`w-full p-4 text-left rounded-lg border-2 transition-all ${
+                    selectedAnswer === index
+                      ? `border-cyan-500 bg-cyan-50`
+                      : 'border-gray-200 hover:border-gray-300 hover:bg-gray-50'
+                  }`}
+                >
+                  <div className="flex items-center">
+                    <div className={`w-6 h-6 rounded-full border-2 mr-3 flex items-center justify-center ${
+                      selectedAnswer === index
+                        ? 'border-cyan-500 bg-cyan-500'
+                        : 'border-gray-300'
+                    }`}>
+                      {selectedAnswer === index && (
+                        <div className="w-2 h-2 bg-white rounded-full"></div>
+                      )}
+                    </div>
+                    <span className="font-medium">{option}</span>
+                  </div>
+                </button>
+              ))}
+            </div>
+
+            {/* Hint Section */}
+            {showHint && (
+              <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
+                <div className="flex items-start">
+                  <Lightbulb className="text-yellow-600 mr-2 mt-1" size={20} />
+                  <div>
+                    <div className="font-medium text-yellow-800 mb-1">Hint:</div>
+                    <div className="text-sm text-yellow-700">
+                      {currentQuestions[currentQuestion].hint}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
+          </div>
+
+          {/* Controls */}
           <div className="flex items-center justify-between">
             <button
               onClick={() => setShowHint(!showHint)}
@@ -548,7 +545,7 @@ const GameInterface: React.FC<GameInterfaceProps> = ({ game, subject, onBack }) 
               {currentQuestion + 1 === currentQuestions.length ? 'Finish' : 'Next Question'}
             </button>
           </div>
-        )}
+        </div>
       </div>
     </div>
   );
